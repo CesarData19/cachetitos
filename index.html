@@ -3,64 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Cachetitos 💖</title>
+    <title>Cachetitos, ¿Quieres ser mi San Valentín?</title>
     <style>
         body {
             text-align: center;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #FFC0CB;
         }
-        h1 {
-            font-size: 3em;
-            animation: fadeIn 2s ease-in-out;
+        #pregunta {
+            font-size: 24px;
+            margin-top: 20px;
         }
-        .heart {
-            font-size: 50px;
-            animation: heartbeat 1.5s infinite;
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .kirby {
+        #kirby {
             width: 200px;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: float 3s ease-in-out infinite;
+            transition: transform 0.3s;
         }
-        @keyframes float {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, -20px); }
+        #kirby:hover {
+            transform: scale(1.1);
         }
-        .btn {
-            background: #ff5f6d;
-            border: none;
-            padding: 10px 20px;
+        .boton {
             font-size: 20px;
-            color: white;
-            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            border: none;
+            border-radius: 10px;
         }
-        .btn:hover {
-            background: #ff2d55;
-        }
+        .si { background-color: lightgreen; }
+        .no { background-color: lightcoral; }
     </style>
 </head>
 <body>
-    <h1>Cachetitos, ¿quieres ser mi San Valentín? 💖</h1>
-    <div class="heart">❤️</div>
-    <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Kirby_character.png" alt="Kirby" class="kirby">
-    <br><br>
-    <button class="btn" onclick="alert('¡Sabía que dirías que sí! 💕')">Sí 💕</button>
+    <h1>Cachetitos ❤️, ¿quieres ser mi San Valentín? 🥺</h1>
+    <img id="kirby" src="kirby.png" alt="Kirby">
+    <p id="pregunta">Elige sabiamente 😏</p>
+    <button class="boton si" onclick="aceptar()">Sí 💖</button>
+    <button class="boton no" onclick="rechazar()">No 😭</button>
+    
+    <script>
+        let intentos = 0;
+        const respuestas = [
+            {img: "kirby1.png", texto: "¿Segura? Vamos, di que sí 🥺"},
+            {img: "kirby2.png", texto: "No te hagas la difícil 😏"},
+            {img: "kirby3.png", texto: "Dale, Cachetitos, di que sí 😘"},
+            {img: "kirby4.png", texto: "No tienes escapatoria 😈"},
+            {img: "kirby5.png", texto: "¡YA DI QUE SÍ! 💥😂"}
+        ];
+
+        function aceptar() {
+            document.body.innerHTML = "<h1>¡Sabía que dirías que sí! ❤️😍</h1>" +
+                                      "<p>Eres la mejor, Cachetitos 💖</p>" +
+                                      "<img src='kirby_feliz.png' alt='Kirby Feliz' width='200'>";
+        }
+
+        function rechazar() {
+            if (intentos < respuestas.length) {
+                document.getElementById("kirby").src = respuestas[intentos].img;
+                document.getElementById("pregunta").textContent = respuestas[intentos].texto;
+                document.querySelector(".no").textContent = "Vamos, sé que quieres 😏";
+                intentos++;
+            } else {
+                document.body.innerHTML = "<h1>Ok, ya entendí 😭</h1>" +
+                                          "<p>Pero igual te quiero 💔</p>" +
+                                          "<img src='kirby_triste.png' alt='Kirby Triste' width='200'>";
+            }
+        }
+    </script>
 </body>
 </html>
