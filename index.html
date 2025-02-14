@@ -6,129 +6,61 @@
     <title>Para Cachetitos 💖</title>
     <style>
         body {
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             font-family: 'Arial', sans-serif;
-            color: white;
+            color: #fff;
             overflow: hidden;
         }
-
         h1 {
-            font-size: 2.5em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
         }
-
-        .hidden {
-            display: none;
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite;
         }
-
-        .message {
-            font-size: 1.5em;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
-
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        button {
-            background-color: #ff4d6d;
-            color: white;
+        .kirby {
+            width: 200px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -20px); }
+        }
+        .btn {
+            background: #ff5f6d;
             border: none;
-            padding: 15px 25px;
-            font-size: 1.2em;
-            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
             border-radius: 10px;
+            cursor: pointer;
             transition: 0.3s;
         }
-
-        button:hover {
-            background-color: #ff1e56;
-        }
-
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        .btn:hover {
+            background: #ff2d55;
         }
     </style>
 </head>
 <body>
-
-    <h1>Hola, Cachetitos 💕</h1>
-    <button id="showMessage">Presiona aquí, Cachetitos 💕</button>
-    <p class="message hidden" id="loveMessage">
-        Fiorella, eres la razón de mis sonrisas, mi inspiración y mi felicidad. Te amo, Cachetitos. ❤️
-    </p>
-
-    <canvas class="hearts" id="heartsCanvas"></canvas>
-
-    <script>
-        document.getElementById("showMessage").addEventListener("click", function() {
-            this.style.display = "none";
-            document.getElementById("loveMessage").classList.remove("hidden");
-        });
-
-        // Animación de corazones flotando
-        const canvas = document.getElementById("heartsCanvas");
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let hearts = [];
-
-        function Heart() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 4 + 1;
-            this.speedY = Math.random() * 2 + 1;
-        }
-
-        Heart.prototype.update = function() {
-            this.y -= this.speedY;
-            if (this.y < 0) {
-                this.y = canvas.height;
-                this.x = Math.random() * canvas.width;
-            }
-        };
-
-        Heart.prototype.draw = function() {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-            ctx.font = "20px Arial";
-            ctx.fillText("❤️", this.x, this.y);
-        };
-
-        function init() {
-            for (let i = 0; i < 50; i++) {
-                hearts.push(new Heart());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            hearts.forEach(heart => {
-                heart.update();
-                heart.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-    </script>
-
+    <h1>Cachetitos, ¿quieres ser mi San Valentín? 💖</h1>
+    <div class="heart">❤️</div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Kirby_character.png" alt="Kirby" class="kirby">
+    <br><br>
+    <button class="btn" onclick="alert('¡Sabía que dirías que sí! 💕')">Sí 💕</button>
 </body>
 </html>
