@@ -40,14 +40,14 @@
 </head>
 <body>
     <h1>Cachetitos 💕, ¿quieres ser mi San Valentín? 🥺</h1>
-    <img id="kirby" src="kirby1.png" width="150">
+    <img id="kirby" src="kirby.png" width="150">
     <br>
     <button class="boton si" onclick="aceptar()">Sí 💖</button>
     <button class="boton no" onclick="rechazar()">No 😭</button>
     
     <script>
         let intentos = 0;
-        const imagenes = ["kirby1.png", "kirby2.png", "kirby3.gif", "kirby4.png", "kirby5.png"];
+        const imagenes = ["kirby1.gif", "kirby2.gif", "kirby3.gif", "kirby4.gif", "kirby5.gif"];
         const mensajesNo = [
             "Vamos, sé que quieres 😏",
             "¿Estás segura? 🙃",
@@ -58,7 +58,7 @@
         
         function aceptar() {
             document.body.innerHTML = "<h1>SABÍA QUE DIRÍAS QUE SÍ 😍💖</h1>" +
-                "<img src='kirby_feliz.png' width='200'><p>Te amo Cachetitos 😘💞</p>";
+                "<img src='kirby_feliz.gif' width='200'><p>Te amo Cachetitos 😘💞</p>";
         }
         
         function rechazar() {
@@ -68,7 +68,7 @@
                 intentos++;
             } else {
                 document.body.innerHTML = "<h1>De todas formas, estamos hechos el uno para el otro 😘💕</h1>" +
-                    "<img src='kirby_triste.png' width='200'><p>No puedes huir del destino, Fiorella 💖</p>";
+                    "<img src='kirby_triste.gif' width='200'><p>No puedes huir del destino, Fiorella 💖</p>";
             }
         }
         
