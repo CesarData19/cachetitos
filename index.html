@@ -3,70 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cachetitos, ¿Quieres ser mi San Valentín?</title>
+    <title>Para Cachetitos 💖</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
             background-color: #FFC0CB;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
-        #pregunta {
-            font-size: 24px;
-            margin-top: 20px;
+        h1 {
+            font-size: 2em;
         }
-        #kirby {
-            width: 200px;
-            transition: transform 0.3s;
+        .flor {
+            position: absolute;
+            width: 50px;
+            animation: crecer 3s linear infinite;
         }
-        #kirby:hover {
-            transform: scale(1.1);
+        @keyframes crecer {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
         .boton {
-            font-size: 20px;
-            padding: 10px;
+            font-size: 1.5em;
+            padding: 10px 20px;
             margin: 10px;
-            cursor: pointer;
-            border: none;
             border-radius: 10px;
+            cursor: pointer;
         }
-        .si { background-color: lightgreen; }
-        .no { background-color: lightcoral; }
+        .si {
+            background-color: lightgreen;
+        }
+        .no {
+            background-color: lightcoral;
+        }
     </style>
 </head>
 <body>
-    <h1>Cachetitos ❤️, ¿quieres ser mi San Valentín? 🥺</h1>
-    <img id="kirby" src="kirby.png" alt="Kirby">
-    <p id="pregunta">Elige sabiamente 😏</p>
+    <h1>Cachetitos 💕, ¿quieres ser mi San Valentín? 🥺</h1>
+    <img id="kirby" src="kirby1.png" width="150">
+    <br>
     <button class="boton si" onclick="aceptar()">Sí 💖</button>
     <button class="boton no" onclick="rechazar()">No 😭</button>
     
     <script>
         let intentos = 0;
-        const respuestas = [
-            {img: "kirby1.png", texto: "¿Segura? Vamos, di que sí 🥺"},
-            {img: "kirby2.png", texto: "No te hagas la difícil 😏"},
-            {img: "kirby3.png", texto: "Dale, Cachetitos, di que sí 😘"},
-            {img: "kirby4.png", texto: "No tienes escapatoria 😈"},
-            {img: "kirby5.png", texto: "¡YA DI QUE SÍ! 💥😂"}
+        const imagenes = ["kirby1.png", "kirby2.png", "kirby3.png", "kirby4.png", "kirby5.png"];
+        const mensajesNo = [
+            "Vamos, sé que quieres 😏",
+            "¿Estás segura? 🙃",
+            "Piensa bien tu decisión 😬",
+            "Última oportunidad 😳",
+            "No hay escapatoria... 😈"
         ];
-
+        
         function aceptar() {
-            document.body.innerHTML = "<h1>¡Sabía que dirías que sí! ❤️😍</h1>" +
-                                      "<p>Eres la mejor, Cachetitos 💖</p>" +
-                                      "<img src='kirby_feliz.png' alt='Kirby Feliz' width='200'>";
+            document.body.innerHTML = "<h1>SABÍA QUE DIRÍAS QUE SÍ 😍💖</h1>" +
+                "<img src='kirby_feliz.png' width='200'><p>Te amo Cachetitos 😘💞</p>";
         }
-
+        
         function rechazar() {
-            if (intentos < respuestas.length) {
-                document.getElementById("kirby").src = respuestas[intentos].img;
-                document.getElementById("pregunta").textContent = respuestas[intentos].texto;
-                document.querySelector(".no").textContent = "Vamos, sé que quieres 😏";
+            if (intentos < 4) {
+                document.querySelector(".no").innerText = mensajesNo[intentos];
+                document.getElementById("kirby").src = imagenes[intentos + 1];
                 intentos++;
             } else {
-                document.body.innerHTML = "<h1>Ok, ya entendí 😭</h1>" +
-                                          "<p>Pero igual te quiero 💔</p>" +
-                                          "<img src='kirby_triste.png' alt='Kirby Triste' width='200'>";
+                document.body.innerHTML = "<h1>De todas formas, estamos hechos el uno para el otro 😘💕</h1>" +
+                    "<img src='kirby_triste.png' width='200'><p>No puedes huir del destino, Fiorella 💖</p>";
             }
+        }
+        
+        // Flores en movimiento
+        for (let i = 0; i < 15; i++) {
+            let flor = document.createElement("img");
+            flor.src = "https://www.pngall.com/wp-content/uploads/5/Pink-Flower-PNG-HD-Image.png";
+            flor.classList.add("flor");
+            flor.style.left = Math.random() * window.innerWidth + "px";
+            flor.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(flor);
         }
     </script>
 </body>
